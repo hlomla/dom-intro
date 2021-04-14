@@ -27,12 +27,17 @@ callTotalCostSetting = Number(callTotalCostElem.value)
 critcicalValueSetting = criticalLevelElem.value
 warningValueSetting = warningLevelElem.value
 console.log({smsTotalCostSetting});
+
 }
 updateBtn.addEventListener("click", settingTotal )
 
 //add an event listener for when the add button is pressed
 function addButtonSettings(){
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+
+ if(overallTotal3 < critcicalValueSetting){
+
+    
     if (checkedRadioBtn){
         var billItemType1 = checkedRadioBtn.value
 
@@ -45,6 +50,7 @@ function addButtonSettings(){
         smsTotal3 += smsTotalCostSetting
     }
 }
+ }
     
 
 callSettingsElem.innerHTML = callTotal3.toFixed(2);
@@ -52,16 +58,16 @@ smsSettingsElem.innerHTML = smsTotal3.toFixed(2);
     overallTotal3 = callTotal3 + smsTotal3;
     totalSettingElem.innerHTML = overallTotal3.toFixed(2);
 
-    if(overallTotal3 >= parseFloat(smsSettingsElem.value)){
+    if(overallTotal3 >= parseFloat(critcicalValueSetting)){
         totalSettingElem.classList.add('danger')
         totalSettingElem.classList.remove('warning')
     }
-    else if(overallTotal3 >= parseFloat(callSettingsElem.value) ) {
+    else if(overallTotal3 >= parseFloat(warningValueSetting) ) {
         totalSettingElem.classList.add('warning')
         totalSettingElem.classList.remove('danger')
         
     }
-    
+    //alert(critcicalValueSetting.value);
 } 
 addBtn.addEventListener("click", addButtonSettings )
 //in the event listener get the value from the billItemTypeRadio radio buttons
