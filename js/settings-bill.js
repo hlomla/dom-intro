@@ -27,14 +27,13 @@ callTotalCostSetting = Number(callTotalCostElem.value)
 critcicalValueSetting = criticalLevelElem.value
 warningValueSetting = warningLevelElem.value
 console.log({smsTotalCostSetting});
-
+addAndRemoveClasses()
 }
 updateBtn.addEventListener("click", settingTotal )
 
 //add an event listener for when the add button is pressed
 function addButtonSettings(){
-    totalSettingElem.classList.remove('warning')
-    totalSettingElem.classList.remove('danger')
+ 
 
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 
@@ -58,6 +57,13 @@ callSettingsElem.innerHTML = callTotal3.toFixed(2);
 smsSettingsElem.innerHTML = smsTotal3.toFixed(2);
     overallTotal3 = callTotal3 + smsTotal3;
     totalSettingElem.innerHTML = overallTotal3.toFixed(2);
+    addAndRemoveClasses()
+  
+} 
+
+function addAndRemoveClasses(){
+    totalSettingElem.classList.remove('warning')
+    totalSettingElem.classList.remove('danger')
 
     if(overallTotal3 >= parseFloat(critcicalValueSetting)){
         totalSettingElem.classList.add('danger')
@@ -66,7 +72,8 @@ smsSettingsElem.innerHTML = smsTotal3.toFixed(2);
         totalSettingElem.classList.add('warning')
         
     }
-} 
+}
+
 addBtn.addEventListener("click", addButtonSettings )
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total
