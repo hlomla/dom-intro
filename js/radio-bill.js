@@ -9,18 +9,21 @@ var totalCostElemTwo = document.querySelector('.totalTwo')
 var radioBillInstance = radioBtnBill()
 
 function radioBillTotal(){
-
-    radioBillInstance.radioBillTotal(billTypeElemTwo.value)
+    
+    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+if(checkedRadioBtn){
+    radioBillInstance.radioBillTotalTwo(checkedRadioBtn.value)
+}
 
         
     //update the totals that is displayed on the screen.
-    callTotalElemTwo.innerHTML = radioBillInstance.getCallRadioTot().toFixed(2);
-    smsTotalElemTwo.innerHTML = radioBillInstance.getSmsRadioTot().toFixed(2);
+    callTotalElemTwo.innerHTML = radioBillInstance.callRadioTotal().toFixed(2);
+    smsTotalElemTwo.innerHTML = radioBillInstance.smsRadioTotal().toFixed(2);
     totalCostElemTwo.innerHTML = radioBillInstance.radioTotal().toFixed(2);
 
     totalCostElemTwo.classList.remove('warning')
     totalCostElemTwo.classList.remove('danger')
-    totalCostElem.classList.add(radioBillInstance.criticalClassName())
+    totalCostElemTwo.classList.add(radioBillInstance.criticalClassName())
 
 }
 addBtnElemTwo.addEventListener("click", radioBillTotal)

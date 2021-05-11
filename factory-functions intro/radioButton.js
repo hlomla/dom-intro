@@ -1,42 +1,30 @@
 function radioBtnBill() {
-    var radioCallTotal = 0;
-    var radioSmsTotal = 0;
     var callTotalTwo = 0;
-    var smsTotalTwo = 0;
-    var radioTot = 0;
-
-    // var warnLevelValue = 30;
-    // var critLevelValue = 50;
-
-    function radioBillTotal(billItemTypeTwo) {
+    var theSmsTotalTwo = 0;
+    
+    function radioBillTotalTwo(billItemTypeTwo) {
         if (billItemTypeTwo === "call") {
             callTotalTwo += 2.75;
-            radioTot += 2.75;
+           
         }
         else if (billItemTypeTwo === "sms") {
-            smsTotalTwo += 0.75;
-            radioTot += 0.75;
+            theSmsTotalTwo += 0.75;
+            
         }
     }
+
     function radioTotal() {
-        return radioCallTotal + radioSmsTotal;
+        return theSmsTotalTwo + callTotalTwo;
+    
     }
-    function smsRadioTotal() {
-        if (!critValueReached()) {
-            return radioSmsTotal += smsTotalTwo;
-        }
+    function smsRadioTotal() { 
+            return theSmsTotalTwo;
     }
-    function getSmsRadioTot() {
-        return radioSmsTotal
-    }
+
     function callRadioTotal() {
-        if (!critValueReached()) {
-            return radioCallTotal += callTotalTwo;
-        }
+            return callTotalTwo;
     }
-    function getCallRadioTot() {
-        return radioCallTotal
-    }
+  
     function warnReached(warningValue) {
         warnLevelValue = warningValue
     }
@@ -64,18 +52,16 @@ function radioBtnBill() {
 
  
     return {
-        radioBillTotal,
+        radioBillTotalTwo,
         radioTotal,
         smsRadioTotal,
-        getSmsRadioTot,
-        getCallRadioTot,
         callRadioTotal,
         warnReached,
         getWarningValue,
         critReached,
         getCriticalValue,
         critValueReached,
-        criticalClassName,
+        criticalClassName
         
     }
 }
